@@ -1,0 +1,387 @@
+20:20:21,459  INFO [main] root - Location arg is custom
+20:20:21,460  INFO [main] root - Type arg is sql
+20:20:21,461  INFO [main] root - Operation arg is run
+20:20:21,463  INFO [main] root - Custom DC dir has path D:\SVNProjects\hudson_dc_build\.\dc\custom
+Exists? true
+20:20:21,464  INFO [main] root - DC_SQL_2.dc
+20:58:06,842  INFO [main] root - Location arg is custom
+20:58:06,843  INFO [main] root - Type arg is sql
+20:58:06,844  INFO [main] root - Operation arg is run
+20:58:06,845  INFO [main] root - Custom DC dir has path D:\SVNProjects\hudson_dc_build\.\dc\custom
+Exists? true
+20:58:06,846  INFO [main] root - DC_SQL_2.dc
+20:58:07,519  INFO [main] root - Start executing container with name DC_SQL_2.dc
+20:58:07,527  INFO [main] root - Query to execute is: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+20:58:07,928  INFO [main] root - Precondition result is false
+20:58:07,929  INFO [main] root - Total execution result is false
+20:58:07,929  INFO [main] root - Result is false
+20:59:21,662  INFO [main] root - Location arg is custom
+20:59:21,663  INFO [main] root - Type arg is sql
+20:59:21,664  INFO [main] root - Operation arg is run
+20:59:21,666  INFO [main] root - Custom DC dir has path D:\SVNProjects\hudson_dc_build\.\dc\custom
+Exists? true
+20:59:21,667  INFO [main] root - DC_SQL_2.dc
+20:59:22,310  INFO [main] root - Start executing container with name DC_SQL_2.dc
+20:59:22,314  INFO [main] root - Query to execute is: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+20:59:22,665  INFO [main] root - Precondition result is true
+21:01:09,660  INFO [main] root - Location arg is custom
+21:01:09,661  INFO [main] root - Type arg is sql
+21:01:09,662  INFO [main] root - Operation arg is run
+21:01:09,664  INFO [main] root - Custom DC dir has path D:\SVNProjects\hudson_dc_build\.\dc\custom
+Exists? true
+21:01:09,665  INFO [main] root - DC_SQL_2.dc
+21:01:10,333  INFO [main] root - Start executing container with name DC_SQL_2.dc
+21:01:10,338  INFO [main] root - Query to execute is: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+21:01:10,668  INFO [main] root - Precondition result is true
+21:01:10,670  INFO [main] root - Query to execute is: 
+CREATE OR REPLACE FORCE VIEW ddv_department_branch AS (
+SELECT
+  ddt_department.r_object_id AS r_object_id,
+  ddt_department.dss_name AS dss_department,
+  ddt_department.dss_index AS dss_index,
+  ddt_department.dsdt_begin AS dsdt_department_begin,
+  ddt_department.dsdt_end AS dsdt_department_end,
+  ddt_branch.r_object_id AS dsid_branch,
+  ddt_branch.dss_name AS dss_branch,
+  ddt_branch.dss_okpo AS dss_branch_okpo,
+  ddt_branch.dss_ogrn AS dss_branch_ogrn,
+  ddt_branch.dss_inn AS dss_branch_inn,
+  ddt_branch.dss_kpp AS dss_branch_kpp,
+  ddt_branch.dsdt_begin AS dsdt_branch_begin,
+  ddt_branch.dsdt_end AS dsdt_branch_end,
+  ddt_branch.dsid_directory_group AS dsid_directory_group,
+  NVL(ddt_parent_department.r_object_id,ddt_branch.r_object_id) AS dsid_parent_department,
+  NVL(ddt_parent_department.dss_name,ddt_branch.dss_name) AS dss_parent_department
+FROM
+  ddt_department_sp ddt_department JOIN ddt_branch_sp ddt_branch
+	  ON ddt_department.dsid_directory_group = ddt_branch.dsid_directory_group
+ LEFT JOIN ddt_periodical_relation_sp relation
+	  ON ddt_department.r_object_id = relation.dsid_child
+ LEFT JOIN ddt_department_sp ddt_parent_department
+	  ON  relation.dsid_parent  = ddt_parent_department.r_object_id
+)
+
+21:01:54,365  INFO [main] root - Location arg is custom
+21:01:54,366  INFO [main] root - Type arg is sql
+21:01:54,367  INFO [main] root - Operation arg is run
+21:01:54,369  INFO [main] root - Custom DC dir has path D:\SVNProjects\hudson_dc_build\.\dc\custom
+Exists? true
+21:01:54,370  INFO [main] root - DC_SQL_2.dc
+21:01:55,034  INFO [main] root - Start executing container with name DC_SQL_2.dc
+21:01:55,038  INFO [main] root - Query to execute is: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+21:01:55,535  INFO [main] root - Precondition result is false
+21:01:55,536  INFO [main] root - Total execution result is false
+21:01:55,537  INFO [main] root - Result is false
+21:02:23,337  INFO [main] root - Location arg is custom
+21:02:23,338  INFO [main] root - Type arg is sql
+21:02:23,339  INFO [main] root - Operation arg is run
+21:02:23,341  INFO [main] root - Custom DC dir has path D:\SVNProjects\hudson_dc_build\.\dc\custom
+Exists? true
+21:02:23,342  INFO [main] root - DC_SQL_2.dc
+21:02:24,020  INFO [main] root - Start executing container with name DC_SQL_2.dc
+21:02:24,024  INFO [main] root - Query to execute is: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+21:02:24,432  INFO [main] root - Precondition result is false
+21:02:24,432  INFO [main] root - Total execution result is false
+21:02:24,433  INFO [main] root - Result is false
+21:02:57,209  INFO [main] root - Location arg is custom
+21:02:57,210  INFO [main] root - Type arg is sql
+21:02:57,211  INFO [main] root - Operation arg is run
+21:02:57,213  INFO [main] root - Custom DC dir has path D:\SVNProjects\hudson_dc_build\.\dc\custom
+Exists? true
+21:02:57,214  INFO [main] root - DC_SQL_2.dc
+21:02:57,900  INFO [main] root - Start executing container with name DC_SQL_2.dc
+21:02:57,904  INFO [main] root - Query to execute is: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+21:02:58,241  INFO [main] root - Precondition result is true
+21:02:58,243  INFO [main] root - Query to execute is: 
+CREATE OR REPLACE FORCE VIEW ddv_department_branch AS (
+SELECT
+  ddt_department.r_object_id AS r_object_id,
+  ddt_department.dss_name AS dss_department,
+  ddt_department.dss_index AS dss_index,
+  ddt_department.dsdt_begin AS dsdt_department_begin,
+  ddt_department.dsdt_end AS dsdt_department_end,
+  ddt_branch.r_object_id AS dsid_branch,
+  ddt_branch.dss_name AS dss_branch,
+  ddt_branch.dss_okpo AS dss_branch_okpo,
+  ddt_branch.dss_ogrn AS dss_branch_ogrn,
+  ddt_branch.dss_inn AS dss_branch_inn,
+  ddt_branch.dss_kpp AS dss_branch_kpp,
+  ddt_branch.dsdt_begin AS dsdt_branch_begin,
+  ddt_branch.dsdt_end AS dsdt_branch_end,
+  ddt_branch.dsid_directory_group AS dsid_directory_group,
+  NVL(ddt_parent_department.r_object_id,ddt_branch.r_object_id) AS dsid_parent_department,
+  NVL(ddt_parent_department.dss_name,ddt_branch.dss_name) AS dss_parent_department
+FROM
+  ddt_department_sp ddt_department JOIN ddt_branch_sp ddt_branch
+	  ON ddt_department.dsid_directory_group = ddt_branch.dsid_directory_group
+ LEFT JOIN ddt_periodical_relation_sp relation
+	  ON ddt_department.r_object_id = relation.dsid_child
+ LEFT JOIN ddt_department_sp ddt_parent_department
+	  ON  relation.dsid_parent  = ddt_parent_department.r_object_id
+)
+
+21:02:58,480  INFO [main] root - DC result is true
+21:02:58,481  INFO [main] root - Query to execute is: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+21:02:58,795  INFO [main] root - Postcondition result is false
+21:02:58,796  INFO [main] root - Total execution result is false
+21:02:58,796  INFO [main] root - Result is false
+21:03:24,931  INFO [main] root - Location arg is custom
+21:03:24,931  INFO [main] root - Type arg is sql
+21:03:24,932  INFO [main] root - Operation arg is run
+21:03:24,934  INFO [main] root - Custom DC dir has path D:\SVNProjects\hudson_dc_build\.\dc\custom
+Exists? true
+21:03:24,935  INFO [main] root - DC_SQL_2.dc
+21:03:25,616  INFO [main] root - Start executing container with name DC_SQL_2.dc
+21:03:25,620  INFO [main] root - Query to execute is: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+21:03:25,948  INFO [main] root - Precondition result is true
+21:03:25,950  INFO [main] root - Query to execute is: 
+CREATE OR REPLACE FORCE VIEW ddv_department_branch AS (
+SELECT
+  ddt_department.r_object_id AS r_object_id,
+  ddt_department.dss_name AS dss_department,
+  ddt_department.dss_index AS dss_index,
+  ddt_department.dsdt_begin AS dsdt_department_begin,
+  ddt_department.dsdt_end AS dsdt_department_end,
+  ddt_branch.r_object_id AS dsid_branch,
+  ddt_branch.dss_name AS dss_branch,
+  ddt_branch.dss_okpo AS dss_branch_okpo,
+  ddt_branch.dss_ogrn AS dss_branch_ogrn,
+  ddt_branch.dss_inn AS dss_branch_inn,
+  ddt_branch.dss_kpp AS dss_branch_kpp,
+  ddt_branch.dsdt_begin AS dsdt_branch_begin,
+  ddt_branch.dsdt_end AS dsdt_branch_end,
+  ddt_branch.dsid_directory_group AS dsid_directory_group,
+  NVL(ddt_parent_department.r_object_id,ddt_branch.r_object_id) AS dsid_parent_department,
+  NVL(ddt_parent_department.dss_name,ddt_branch.dss_name) AS dss_parent_department
+FROM
+  ddt_department_sp ddt_department JOIN ddt_branch_sp ddt_branch
+	  ON ddt_department.dsid_directory_group = ddt_branch.dsid_directory_group
+ LEFT JOIN ddt_periodical_relation_sp relation
+	  ON ddt_department.r_object_id = relation.dsid_child
+ LEFT JOIN ddt_department_sp ddt_parent_department
+	  ON  relation.dsid_parent  = ddt_parent_department.r_object_id
+)
+
+21:03:26,170  INFO [main] root - DC result is true
+21:03:26,171  INFO [main] root - Query to execute is: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+21:03:26,317  INFO [main] root - Postcondition result is false
+21:03:26,318  INFO [main] root - Total execution result is false
+21:03:26,318  INFO [main] root - Result is false
+21:04:11,032  INFO [main] root - Location arg is custom
+21:04:11,033  INFO [main] root - Type arg is sql
+21:04:11,034  INFO [main] root - Operation arg is run
+21:04:11,036  INFO [main] root - Custom DC dir has path D:\SVNProjects\hudson_dc_build\.\dc\custom
+Exists? true
+21:04:11,037  INFO [main] root - DC_SQL_2.dc
+21:04:11,707  INFO [main] root - Start executing container with name DC_SQL_2.dc
+21:04:11,711  INFO [main] root - Query to execute is: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+21:04:12,061  INFO [main] root - Precondition result is true
+21:04:12,063  INFO [main] root - Query to execute is: 
+CREATE OR REPLACE FORCE VIEW ddv_department_branch AS (
+SELECT
+  ddt_department.r_object_id AS r_object_id,
+  ddt_department.dss_name AS dss_department,
+  ddt_department.dss_index AS dss_index,
+  ddt_department.dsdt_begin AS dsdt_department_begin,
+  ddt_department.dsdt_end AS dsdt_department_end,
+  ddt_branch.r_object_id AS dsid_branch,
+  ddt_branch.dss_name AS dss_branch,
+  ddt_branch.dss_okpo AS dss_branch_okpo,
+  ddt_branch.dss_ogrn AS dss_branch_ogrn,
+  ddt_branch.dss_inn AS dss_branch_inn,
+  ddt_branch.dss_kpp AS dss_branch_kpp,
+  ddt_branch.dsdt_begin AS dsdt_branch_begin,
+  ddt_branch.dsdt_end AS dsdt_branch_end,
+  ddt_branch.dsid_directory_group AS dsid_directory_group,
+  NVL(ddt_parent_department.r_object_id,ddt_branch.r_object_id) AS dsid_parent_department,
+  NVL(ddt_parent_department.dss_name,ddt_branch.dss_name) AS dss_parent_department
+FROM
+  ddt_department_sp ddt_department JOIN ddt_branch_sp ddt_branch
+	  ON ddt_department.dsid_directory_group = ddt_branch.dsid_directory_group
+ LEFT JOIN ddt_periodical_relation_sp relation
+	  ON ddt_department.r_object_id = relation.dsid_child
+ LEFT JOIN ddt_department_sp ddt_parent_department
+	  ON  relation.dsid_parent  = ddt_parent_department.r_object_id
+)
+
+21:04:12,267  INFO [main] root - DC result is true
+21:04:12,268  INFO [main] root - Query to execute is: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+21:04:12,421  INFO [main] root - Postcondition result is false
+21:04:12,421  INFO [main] root - Total execution result is false
+21:04:12,422  INFO [main] root - Result is false
+21:21:51,300  INFO [main] root - Location arg is custom
+21:21:51,301  INFO [main] root - Type arg is sql
+21:21:51,302  INFO [main] root - Operation arg is run
+21:21:51,304  INFO [main] root - Start filling dc map from custom folder
+21:21:51,305  INFO [main] root - Custom folder has path D:\SVNProjects\hudson_dc_build\.\dc\custom Exists? true
+21:21:51,306  INFO [main] root - DC file name: DC_SQL_2.dc
+21:21:51,868  INFO [main] root - Precondition initialization block has run.
+21:21:51,870  INFO [main] root - Precondition properties: 
+Query: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+Rows: [[:]]
+21:21:51,877  INFO [main] root - DC initialization block has run.
+21:21:51,880  INFO [main] root - DC properties: 
+Query: 
+CREATE OR REPLACE FORCE VIEW ddv_department_branch AS (
+SELECT
+  ddt_department.r_object_id AS r_object_id,
+  ddt_department.dss_name AS dss_department,
+  ddt_department.dss_index AS dss_index,
+  ddt_department.dsdt_begin AS dsdt_department_begin,
+  ddt_department.dsdt_end AS dsdt_department_end,
+  ddt_branch.r_object_id AS dsid_branch,
+  ddt_branch.dss_name AS dss_branch,
+  ddt_branch.dss_okpo AS dss_branch_okpo,
+  ddt_branch.dss_ogrn AS dss_branch_ogrn,
+  ddt_branch.dss_inn AS dss_branch_inn,
+  ddt_branch.dss_kpp AS dss_branch_kpp,
+  ddt_branch.dsdt_begin AS dsdt_branch_begin,
+  ddt_branch.dsdt_end AS dsdt_branch_end,
+  ddt_branch.dsid_directory_group AS dsid_directory_group,
+  NVL(ddt_parent_department.r_object_id,ddt_branch.r_object_id) AS dsid_parent_department,
+  NVL(ddt_parent_department.dss_name,ddt_branch.dss_name) AS dss_parent_department
+FROM
+  ddt_department_sp ddt_department JOIN ddt_branch_sp ddt_branch
+	  ON ddt_department.dsid_directory_group = ddt_branch.dsid_directory_group
+ LEFT JOIN ddt_periodical_relation_sp relation
+	  ON ddt_department.r_object_id = relation.dsid_child
+ LEFT JOIN ddt_department_sp ddt_parent_department
+	  ON  relation.dsid_parent  = ddt_parent_department.r_object_id
+)
+
+Min val: 0
+Max val: null
+21:21:51,899  INFO [main] root - Postcondition initialization block has run.
+21:21:51,900  INFO [main] root - Postcondition properties: 
+Query: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+Rows: [[VIEW_NAME:DDV_DEPARTMENT_BRANCH, OWNER:DBUIO]]
+21:21:52,015  INFO [main] root - Start executing container with name DC_SQL_2.dc
+21:21:52,019  INFO [main] root - Query to execute is: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+21:21:52,365  INFO [main] root - Columns: 2
+21:21:52,365  INFO [main] root - Map size: 1
+21:21:52,366  INFO [main] root - Two maps comparison result is true
+21:21:52,367  INFO [main] root - Precondition result is true
+21:21:52,369  INFO [main] root - Query to execute is: 
+CREATE OR REPLACE FORCE VIEW ddv_department_branch AS (
+SELECT
+  ddt_department.r_object_id AS r_object_id,
+  ddt_department.dss_name AS dss_department,
+  ddt_department.dss_index AS dss_index,
+  ddt_department.dsdt_begin AS dsdt_department_begin,
+  ddt_department.dsdt_end AS dsdt_department_end,
+  ddt_branch.r_object_id AS dsid_branch,
+  ddt_branch.dss_name AS dss_branch,
+  ddt_branch.dss_okpo AS dss_branch_okpo,
+  ddt_branch.dss_ogrn AS dss_branch_ogrn,
+  ddt_branch.dss_inn AS dss_branch_inn,
+  ddt_branch.dss_kpp AS dss_branch_kpp,
+  ddt_branch.dsdt_begin AS dsdt_branch_begin,
+  ddt_branch.dsdt_end AS dsdt_branch_end,
+  ddt_branch.dsid_directory_group AS dsid_directory_group,
+  NVL(ddt_parent_department.r_object_id,ddt_branch.r_object_id) AS dsid_parent_department,
+  NVL(ddt_parent_department.dss_name,ddt_branch.dss_name) AS dss_parent_department
+FROM
+  ddt_department_sp ddt_department JOIN ddt_branch_sp ddt_branch
+	  ON ddt_department.dsid_directory_group = ddt_branch.dsid_directory_group
+ LEFT JOIN ddt_periodical_relation_sp relation
+	  ON ddt_department.r_object_id = relation.dsid_child
+ LEFT JOIN ddt_department_sp ddt_parent_department
+	  ON  relation.dsid_parent  = ddt_parent_department.r_object_id
+)
+
+21:21:52,580  INFO [main] root - DC result is true
+21:21:52,581  INFO [main] root - Query to execute is: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+21:21:52,733  INFO [main] root - Columns: 2
+21:21:52,733  INFO [main] root - Map size: 1
+21:21:52,734  INFO [main] root - Two maps comparison result is true
+21:21:52,735  INFO [main] root - Postcondition result is false
+21:21:52,736  INFO [main] root - Total execution result is false
+21:21:52,737  INFO [main] root - Result is false
+21:23:14,389  INFO [main] root - Location arg is custom
+21:23:14,389  INFO [main] root - Type arg is sql
+21:23:14,389  INFO [main] root - Operation arg is run
+21:23:14,391  INFO [main] root - Start filling dc map from custom folder
+21:23:14,392  INFO [main] root - Custom folder has path D:\SVNProjects\hudson_dc_build\.\dc\custom Exists? true
+21:23:14,392  INFO [main] root - DC file name: DC_SQL_2.dc
+21:23:14,928  INFO [main] root - Precondition initialization block has run.
+21:23:14,930  INFO [main] root - Precondition properties: 
+Query: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+Rows: [[:]]
+21:23:14,936  INFO [main] root - DC initialization block has run.
+21:23:14,938  INFO [main] root - DC properties: 
+Query: 
+CREATE OR REPLACE FORCE VIEW ddv_department_branch AS (
+SELECT
+  ddt_department.r_object_id AS r_object_id,
+  ddt_department.dss_name AS dss_department,
+  ddt_department.dss_index AS dss_index,
+  ddt_department.dsdt_begin AS dsdt_department_begin,
+  ddt_department.dsdt_end AS dsdt_department_end,
+  ddt_branch.r_object_id AS dsid_branch,
+  ddt_branch.dss_name AS dss_branch,
+  ddt_branch.dss_okpo AS dss_branch_okpo,
+  ddt_branch.dss_ogrn AS dss_branch_ogrn,
+  ddt_branch.dss_inn AS dss_branch_inn,
+  ddt_branch.dss_kpp AS dss_branch_kpp,
+  ddt_branch.dsdt_begin AS dsdt_branch_begin,
+  ddt_branch.dsdt_end AS dsdt_branch_end,
+  ddt_branch.dsid_directory_group AS dsid_directory_group,
+  NVL(ddt_parent_department.r_object_id,ddt_branch.r_object_id) AS dsid_parent_department,
+  NVL(ddt_parent_department.dss_name,ddt_branch.dss_name) AS dss_parent_department
+FROM
+  ddt_department_sp ddt_department JOIN ddt_branch_sp ddt_branch
+	  ON ddt_department.dsid_directory_group = ddt_branch.dsid_directory_group
+ LEFT JOIN ddt_periodical_relation_sp relation
+	  ON ddt_department.r_object_id = relation.dsid_child
+ LEFT JOIN ddt_department_sp ddt_parent_department
+	  ON  relation.dsid_parent  = ddt_parent_department.r_object_id
+)
+
+Min val: 0
+Max val: null
+21:23:14,955  INFO [main] root - Postcondition initialization block has run.
+21:23:14,955  INFO [main] root - Postcondition properties: 
+Query: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+Rows: [[VIEW_NAME:DDV_DEPARTMENT_BRANCH, OWNER:GERICH]]
+21:23:15,059  INFO [main] root - Start executing container with name DC_SQL_2.dc
+21:23:15,062  INFO [main] root - Query to execute is: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+21:23:15,385  INFO [main] root - Columns: 2
+21:23:15,386  INFO [main] root - Map size: 1
+21:23:15,387  INFO [main] root - Two maps comparison result is true
+21:23:15,388  INFO [main] root - Precondition result is true
+21:23:15,390  INFO [main] root - Query to execute is: 
+CREATE OR REPLACE FORCE VIEW ddv_department_branch AS (
+SELECT
+  ddt_department.r_object_id AS r_object_id,
+  ddt_department.dss_name AS dss_department,
+  ddt_department.dss_index AS dss_index,
+  ddt_department.dsdt_begin AS dsdt_department_begin,
+  ddt_department.dsdt_end AS dsdt_department_end,
+  ddt_branch.r_object_id AS dsid_branch,
+  ddt_branch.dss_name AS dss_branch,
+  ddt_branch.dss_okpo AS dss_branch_okpo,
+  ddt_branch.dss_ogrn AS dss_branch_ogrn,
+  ddt_branch.dss_inn AS dss_branch_inn,
+  ddt_branch.dss_kpp AS dss_branch_kpp,
+  ddt_branch.dsdt_begin AS dsdt_branch_begin,
+  ddt_branch.dsdt_end AS dsdt_branch_end,
+  ddt_branch.dsid_directory_group AS dsid_directory_group,
+  NVL(ddt_parent_department.r_object_id,ddt_branch.r_object_id) AS dsid_parent_department,
+  NVL(ddt_parent_department.dss_name,ddt_branch.dss_name) AS dss_parent_department
+FROM
+  ddt_department_sp ddt_department JOIN ddt_branch_sp ddt_branch
+	  ON ddt_department.dsid_directory_group = ddt_branch.dsid_directory_group
+ LEFT JOIN ddt_periodical_relation_sp relation
+	  ON ddt_department.r_object_id = relation.dsid_child
+ LEFT JOIN ddt_department_sp ddt_parent_department
+	  ON  relation.dsid_parent  = ddt_parent_department.r_object_id
+)
+
+21:23:15,601  INFO [main] root - DC result is true
+21:23:15,602  INFO [main] root - Query to execute is: select VIEW_NAME, OWNER from SYS.ALL_VIEWS where view_name = 'DDV_DEPARTMENT_BRANCH' order by OWNER, VIEW_NAME
+21:23:15,761  INFO [main] root - Columns: 2
+21:23:15,762  INFO [main] root - Map size: 1
+21:23:15,763  INFO [main] root - Two maps comparison result is true
+21:23:15,764  INFO [main] root - Postcondition result is true
+21:23:15,764  INFO [main] root - Total execution result is true
+21:23:15,765  INFO [main] root - Result is true

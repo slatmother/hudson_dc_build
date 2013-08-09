@@ -1,0 +1,128 @@
+19:43:39,910  INFO [main] root - query 
+select dcnumber, headline from dc where dbid in (select child_dbid from parent_child_links where child_entitydef_id in (select id from entitydef where name = 'DC') and parent_dbid in (select first_value(bb.dbid) over (order by bb.id desc) from build bb where bb.id is not null and bb.project in (select dbid from project where name = '??:????? ????? Documentum'))) and (headline like '%dql%' or headline like '%sql%') order by dbid asc
+19:43:40,340  INFO [main] root - resultset rows count 0
+19:43:41,178  INFO [main] com.documentum.fc.client.security.impl.JKSKeystoreUtilForDfc - keystore file name is D:\SVNProjects\hudson_dc_build\lib\dfc.keystore
+19:43:41,188  INFO [main] com.documentum.fc.client.security.impl.InitializeKeystoreForDfc - [DFC_SECURITY_IDENTITY_LOADED] Loaded identity from keystore, DFC alias=dfc, identity=dfc_gR4Xlw8i5cwUgUcXGVawxccpmQoa
+19:43:41,190  INFO [main] com.documentum.fc.client.security.impl.AuthenticationMgrForDfc - identity for authentication is dfc_gR4Xlw8i5cwUgUcXGVawxccpmQoa
+19:43:41,193  INFO [main] com.documentum.fc.impl.RuntimeContext - DFC Version is 6.7.1000.0027
+19:43:41,502  INFO [Timer-1] com.documentum.fc.client.impl.bof.cache.ClassCacheManager$CacheCleanupTask - [DFC_BOF_RUNNING_CLEANUP] Running class cache cleanup task
+19:43:43,723  WARN [main] com.documentum.fc.client.impl.bof.classmgmt.ModuleManager - [DFC_BOF_COULDNT_CONNECT_TO_REGISTRY] Unable to connect to module registry, docbase name gerich username dm_bof_registry.
+DfDocbrokerException:: THREAD: main; MSG: [DFC_DOCBROKER_REQUEST_FAILED] Request to Docbroker "172.21.103.32:1490" failed; ERRORCODE: ff; NEXT: null
+	at com.documentum.fc.client.DfDocbrokerException.newRequestFailedException(DfDocbrokerException.java:12)
+	at com.documentum.fc.client.impl.connection.docbroker.DocbrokerConnection.<init>(DocbrokerConnection.java:30)
+	at com.documentum.fc.client.impl.connection.docbroker.DocbrokerConnectionFactory.newDocbrokerConnection(DocbrokerConnectionFactory.java:27)
+	at com.documentum.fc.client.impl.docbroker.MapBuilder.issueRequest(MapBuilder.java:27)
+	at com.documentum.fc.client.impl.docbroker.ServerMapBuilder.getDataFromDocbroker(ServerMapBuilder.java:76)
+	at com.documentum.fc.client.impl.docbroker.ServerMapBuilder.getMap(ServerMapBuilder.java:35)
+	at com.documentum.fc.client.impl.docbroker.DocbrokerClient.getServerMap(DocbrokerClient.java:152)
+	at com.documentum.fc.client.impl.connection.docbase.ServerChoiceManager.updateServerChoices(ServerChoiceManager.java:158)
+	at com.documentum.fc.client.impl.connection.docbase.ServerChoiceManager.updateServerChoicesIfNecessary(ServerChoiceManager.java:147)
+	at com.documentum.fc.client.impl.connection.docbase.ServerChoiceManager.getServerChoices(ServerChoiceManager.java:46)
+	at com.documentum.fc.client.impl.connection.docbase.DocbaseConnection.getServerChoices(DocbaseConnection.java:270)
+	at com.documentum.fc.client.impl.connection.docbase.DocbaseConnection.establishNewRpcClient(DocbaseConnection.java:224)
+	at com.documentum.fc.client.impl.connection.docbase.DocbaseConnection.open(DocbaseConnection.java:123)
+	at com.documentum.fc.client.impl.connection.docbase.DocbaseConnection.<init>(DocbaseConnection.java:97)
+	at com.documentum.fc.client.impl.connection.docbase.DocbaseConnection.<init>(DocbaseConnection.java:60)
+	at com.documentum.fc.client.impl.connection.docbase.DocbaseConnectionFactory.newDocbaseConnection(DocbaseConnectionFactory.java:26)
+	at com.documentum.fc.client.impl.connection.docbase.DocbaseConnectionManager.getDocbaseConnection(DocbaseConnectionManager.java:85)
+	at com.documentum.fc.client.impl.session.SessionFactory.newSession(SessionFactory.java:29)
+	at com.documentum.fc.client.impl.session.PrincipalAwareSessionFactory.newSession(PrincipalAwareSessionFactory.java:42)
+	at com.documentum.fc.client.impl.session.PooledSessionFactory.newSession(PooledSessionFactory.java:47)
+	at com.documentum.fc.client.impl.session.SessionManager.getSessionFromFactory(SessionManager.java:111)
+	at com.documentum.fc.client.impl.session.SessionManager.newSession(SessionManager.java:64)
+	at com.documentum.fc.client.impl.session.SessionManager.getSession(SessionManager.java:168)
+	at com.documentum.fc.client.impl.bof.classmgmt.ModuleManager.connect(ModuleManager.java:353)
+	at com.documentum.fc.client.impl.bof.classmgmt.ModuleManager.init(ModuleManager.java:308)
+	at com.documentum.fc.client.impl.bof.classmgmt.ModuleManager.getInstance(ModuleManager.java:35)
+	at com.documentum.fc.client.security.impl.DfcIdentityPublisher.<init>(DfcIdentityPublisher.java:44)
+	at com.documentum.fc.client.security.internal.RegistrationMgr.register(RegistrationMgr.java:34)
+	at com.documentum.fc.impl.RuntimeContext.<clinit>(RuntimeContext.java:191)
+	at com.documentum.fc.client.DfClient.<clinit>(DfClient.java:734)
+	at com.documentum.com.DfClientX.getLocalClient(DfClientX.java:43)
+	at util.Utils.getSessionFromConfig(Utils.java:51)
+	at service.ProcessService.run(ProcessService.java:60)
+	at service.ProcessService.execute(ProcessService.java:41)
+	at main.Main.main(Main.java:62)
+Caused by: DfIOException:: THREAD: main; MSG: [DM_SESSION_E_RPC_ERROR]error:  "Server communication failure"; ERRORCODE: 100; NEXT: null
+	at com.documentum.fc.client.DfIOException.newCommunicationFailureException(DfIOException.java:16)
+	at com.documentum.fc.client.impl.connection.docbroker.netwise.NetwiseDocbrokerRpcClientFactory.newDocbrokerRpcClient(NetwiseDocbrokerRpcClientFactory.java:40)
+	at com.documentum.fc.client.impl.connection.docbroker.DocbrokerConnection.<init>(DocbrokerConnection.java:25)
+	... 33 more
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:618)
+	at sun.security.ssl.BaseSSLSocketImpl.connect(BaseSSLSocketImpl.java:160)
+	at com.documentum.fc.client.impl.connection.docbroker.netwise.NetwiseDocbrokerRpcClientFactory$1.run(NetwiseDocbrokerRpcClientFactory.java:197)
+	at com.documentum.fc.client.impl.connection.docbroker.netwise.NetwiseDocbrokerRpcClientFactory$1.run(NetwiseDocbrokerRpcClientFactory.java:167)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.documentum.fc.client.impl.connection.docbroker.netwise.NetwiseDocbrokerRpcClientFactory.openSocket(NetwiseDocbrokerRpcClientFactory.java:164)
+	at com.documentum.fc.client.impl.connection.docbroker.netwise.NetwiseDocbrokerRpcClientFactory.connect(NetwiseDocbrokerRpcClientFactory.java:124)
+	at com.documentum.fc.client.impl.connection.docbroker.netwise.NetwiseDocbrokerRpcClientFactory.openSocket(NetwiseDocbrokerRpcClientFactory.java:94)
+	at com.documentum.fc.client.impl.connection.docbroker.netwise.NetwiseDocbrokerRpcClientFactory.newDocbrokerRpcClient(NetwiseDocbrokerRpcClientFactory.java:36)
+	... 34 more
+19:43:43,758  WARN [main] com.documentum.fc.client.security.internal.RegistrationMgr - [DFC_SECURITY_GR_PUBLICATION_FAILED] Publication of DFC instance with global registry failed
+DfException:: THREAD: main; MSG: [DFC_BOF_GLOBAL_REGISTRY_UNAVAILABLE] Unable to connect to the global registry no session; ERRORCODE: ff; NEXT: null
+	at com.documentum.fc.client.security.impl.DfcIdentityPublisher.<init>(DfcIdentityPublisher.java:55)
+	at com.documentum.fc.client.security.internal.RegistrationMgr.register(RegistrationMgr.java:34)
+	at com.documentum.fc.impl.RuntimeContext.<clinit>(RuntimeContext.java:191)
+	at com.documentum.fc.client.DfClient.<clinit>(DfClient.java:734)
+	at com.documentum.com.DfClientX.getLocalClient(DfClientX.java:43)
+	at util.Utils.getSessionFromConfig(Utils.java:51)
+	at service.ProcessService.run(ProcessService.java:60)
+	at service.ProcessService.execute(ProcessService.java:41)
+	at main.Main.main(Main.java:62)
+19:43:45,771 ERROR [main] root - DfDocbrokerException:: THREAD: main; MSG: [DFC_DOCBROKER_REQUEST_FAILED] Request to Docbroker "172.21.103.32:1490" failed; ERRORCODE: ff; NEXT: null
+19:43:45,772 ERROR [main] root - DfDocbrokerException:: THREAD: main; MSG: [DFC_DOCBROKER_REQUEST_FAILED] Request to Docbroker "172.21.103.32:1490" failed; ERRORCODE: ff; NEXT: null
+19:54:28,020  INFO [main] root - query 
+select dcnumber, headline from dc where dbid in (select child_dbid from parent_child_links where child_entitydef_id in (select id from entitydef where name = 'DC') and parent_dbid in (select first_value(bb.dbid) over (order by bb.id desc) from build bb where bb.id is not null and bb.project in (select dbid from project where name = '??:????? ????? Documentum'))) and (headline like '%dql%' or headline like '%sql%') order by dbid asc
+19:54:28,442  INFO [main] root - resultset rows count 0
+19:54:28,443  INFO [main] root - Total execution result is true
+19:54:28,444  INFO [main] root - Result is true
+19:54:51,884  INFO [main] root - query 
+select dcnumber, headline from dc where dbid in (select child_dbid from parent_child_links where child_entitydef_id in (select id from entitydef where name = 'DC') and parent_dbid in (select first_value(bb.dbid) over (order by bb.id desc) from build bb where bb.id is not null and bb.project in (select dbid from project where name = '??:????? ????? Documentum'))) and (headline like '%dql%' or headline like '%sql%') order by dbid asc
+19:54:52,294  INFO [main] root - resultset rows count 0
+19:54:52,296  INFO [main] root - Total execution result is true
+19:54:52,296  INFO [main] root - Result is true
+20:01:36,292  INFO [main] root - Location arg is cq
+20:01:36,292  INFO [main] root - Type arg is all
+20:01:36,293  INFO [main] root - Operation arg is run
+20:01:36,499  INFO [main] root - query 
+select dcnumber, headline from dc where dbid in (select child_dbid from parent_child_links where child_entitydef_id in (select id from entitydef where name = 'DC') and parent_dbid in (select first_value(bb.dbid) over (order by bb.id desc) from build bb where bb.id is not null and bb.project in (select dbid from project where name = '??:????? ????? Documentum'))) and (headline like '%dql%' or headline like '%sql%') order by dbid asc
+20:01:36,914  INFO [main] root - resultset rows count 0
+20:01:36,917  INFO [main] root - Total execution result is true
+20:01:36,917  INFO [main] root - Result is true
+20:04:19,143  INFO [main] root - Location arg is cq
+20:04:19,144  INFO [main] root - Type arg is all
+20:04:19,144  INFO [main] root - Operation arg is run
+20:04:20,501  INFO [main] root - query 
+select dcnumber, headline from dc where dbid in (select child_dbid from parent_child_links where child_entitydef_id in (select id from entitydef where name = 'DC') and parent_dbid in (select first_value(bb.dbid) over (order by bb.id desc) from build bb where bb.id is not null and bb.project in (select dbid from project where name = '??:????? ????? Documentum'))) and (headline like '%dql%' or headline like '%sql%') order by dbid asc
+20:04:21,778  INFO [main] root - resultset rows count 0
+20:04:21,779  INFO [main] root - Total execution result is true
+20:04:21,779  INFO [main] root - Result is true
+20:04:50,646  INFO [main] root - Location arg is custom
+20:04:50,647  INFO [main] root - Type arg is sql
+20:04:50,648  INFO [main] root - Operation arg is run
+20:04:50,652  INFO [main] root - Total execution result is true
+20:04:50,653  INFO [main] root - Result is true
+20:08:04,956  INFO [main] root - Location arg is cq
+20:08:04,957  INFO [main] root - Type arg is all
+20:08:04,958  INFO [main] root - Operation arg is run
+20:08:05,167  INFO [main] root - query 
+select dcnumber, headline from dc where dbid in (select child_dbid from parent_child_links where child_entitydef_id in (select id from entitydef where name = 'DC') and parent_dbid in (select first_value(bb.dbid) over (order by bb.id desc) from build bb where bb.id is not null and bb.project in (select dbid from project where name = '??:????? ????? Documentum'))) and (headline like '%dql%' or headline like '%sql%') order by dbid asc
+20:08:05,579  INFO [main] root - resultset rows count 0
+20:08:05,580  INFO [main] root - Total execution result is true
+20:08:05,581  INFO [main] root - Result is true
+20:08:16,165  INFO [main] root - Location arg is custom
+20:08:16,166  INFO [main] root - Type arg is sql
+20:08:16,167  INFO [main] root - Operation arg is run
+20:08:16,169  INFO [main] root - Custom DC dir has path D:\SVNProjects\hudson_dc_build\bin\.\dc\custom
+Exists? false
+20:08:16,172  INFO [main] root - Total execution result is true
+20:08:16,173  INFO [main] root - Result is true
